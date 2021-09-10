@@ -17,6 +17,7 @@ import Search from "./components/Search.vue";
 import Select from "./components/Select.vue";
 import TransactionTable from "./components/TransactionTable.vue";
 import { getTransactions } from "./service/transaction";
+import Modal from "./components/Modal.vue";
 
 export default {
   name: "App",
@@ -25,6 +26,7 @@ export default {
     Search,
     Select,
     TransactionTable,
+    Modal,
   },
   data() {
     return {
