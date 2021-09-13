@@ -1,32 +1,51 @@
 <template>
-  <table>
-    <thead>
-      <tr>
-        <th v-for="(title, index) in titles" :key="index">
-          {{ title }}
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="transaction in transactions" :key="transaction.id">
-        <td>{{ transaction.title }}</td>
-        <td>{{ transaction.description }}</td>
-        <td>{{ transaction.status }}</td>
-        <td>{{ transaction.amount }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th v-for="(title, index) in titles" :key="index">
+            {{ title }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="transaction in transactions"
+          :key="transaction.id"
+          @click="abrirModal(transaction)"
+        >
+          <td>{{ transaction.title }}</td>
+          <td>{{ transaction.description }}</td>
+          <td>{{ transaction.status }}</td>
+          <td>{{ transaction.amount }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <Dialog :showDialog="showDialog" :transaction="transactionSelected" />
+  </div>
 </template>
 
 <script>
+import Dialog from "./Dialog.vue";
 export default {
+  components: {
+    Dialog,
+  },
   data() {
     return {
+      transactionSelected: {},
+      showDialog: false,
       titles: ["Título", "Descrição", "Status", "Valor"],
     };
   },
   props: {
     transactions: Array,
+  },
+  methods: {
+    abrirModal(transaction) {
+      this.showDialog = true;
+      this.transactionSelected = transaction;
+    },
   },
 };
 </script>
@@ -35,6 +54,7 @@ export default {
 table {
   border: 1px solid black;
   border-collapse: collapse;
+  width: 100%;
 }
 th {
   background: #ccc;
