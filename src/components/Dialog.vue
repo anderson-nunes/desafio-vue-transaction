@@ -1,6 +1,6 @@
 <template>
-  <div class="dialog" v-show="showDialog">
-    <div class="dialog-container">
+  <div @click="closeDialog" class="dialog" v-show="showDialog">
+    <div @click.stop class="dialog-container">
       <h1>{{ transaction.title }}</h1>
       <h2 class="trans-1">Transferindo de</h2>
       <div class="amount">
@@ -14,7 +14,7 @@
         <h3>Conta Warren</h3>
         <h3>{{ transaction.amount }}</h3>
       </div>
-      <button @click="showDialog">fechar</button>
+      <button @click="closeDialog">fechar</button>
     </div>
   </div>
 </template>
@@ -25,9 +25,9 @@ export default {
     showDialog: Boolean,
     transaction: Object,
   },
-  watch: {
-    transaction() {
-      console.log(this.transaction);
+  methods: {
+    closeDialog() {
+      this.$emit("on-close");
     },
   },
 };

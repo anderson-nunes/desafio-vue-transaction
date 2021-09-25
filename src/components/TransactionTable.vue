@@ -21,7 +21,11 @@
         </tr>
       </tbody>
     </table>
-    <Dialog :showDialog="showDialog" :transaction="transactionSelected" />
+    <Dialog
+      :showDialog="showDialog"
+      :transaction="transactionSelected"
+      @on-close="closeModal"
+    />
   </div>
 </template>
 
@@ -45,6 +49,9 @@ export default {
     abrirModal(transaction) {
       this.showDialog = true;
       this.transactionSelected = transaction;
+    },
+    closeModal() {
+      this.showDialog = false;
     },
   },
 };

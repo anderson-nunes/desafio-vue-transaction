@@ -19,6 +19,9 @@ export default {
       selected: "",
     };
   },
+  created() {
+    this.selected = this.options[0].value;
+  },
   watch: {
     selected() {
       this.$emit("on-select", this.selected);
