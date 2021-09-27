@@ -14,7 +14,9 @@
         <h3>Conta Warren</h3>
         <h3>{{ transaction.amount }}</h3>
       </div>
-      <button @click="closeDialog">fechar</button>
+      <div @click="closeDialog">
+        <img class="img" src="../assets/close.png" alt="" />
+      </div>
     </div>
   </div>
 </template>
@@ -34,6 +36,12 @@ export default {
 </script>
 
 <style>
+.img {
+  cursor: pointer;
+  padding-top: 5px;
+  width: 50px;
+  height: 50px;
+}
 .dialog {
   width: 100%;
   height: 100vh;
