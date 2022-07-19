@@ -11,7 +11,7 @@
         <h2 class="trans-1">Para</h2>
       </div>
       <div class="amount">
-        <h3>Conta Warren</h3>
+        <h3>Vue Transaction</h3>
         <h3>{{ transaction.amount }}</h3>
       </div>
       <div @click="closeDialog">
