@@ -92,6 +92,7 @@ export default {
   text-align: center;
   background: white;
 }
+
 * {
   margin: 0;
   padding: 0;
